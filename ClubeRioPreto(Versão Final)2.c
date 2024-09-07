@@ -85,7 +85,7 @@ int main() {
     int x = 1;
     setlocale(LC_ALL, "Portuguese");
     
-    srand(time(NULL)); // Inicializa o gerador de números aleatórios
+    srand(time(NULL)); // Inicializa o gerador de nÃºmeros aleatÃ³rios
 
     while (x) {
         printf("\n\t====Bem vindo ao sistema de gerenciamento do clube Rio Preto====\n\n");
@@ -97,7 +97,7 @@ int main() {
         printf("\t4. Consultar socio\n");
         printf("\t5. Registrar dependente\n");
         printf("\t6. Consultar mensalidade\n");
-        printf("!\t7. Sair do sistema\n");
+        printf("\t7. Sair do sistema\n");
         printf("\t-----------------------------------------\n");
         scanf("\t%d", &escolha);
         getchar(); // Limpa o newline deixado pelo scanf
@@ -133,7 +133,7 @@ int main() {
     return 0;
 }
 
-void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a mensalidade que esta sendo quitada
+void quitarmensalidade(int i,int M){//o i representa a posiÃ§Ã£o do socio. o M a mensalidade que esta sendo quitada
 	float valor;
 	
 	
@@ -148,8 +148,8 @@ void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a m
 	printf("\t---Dados da mensalidade---\n");
 	printf("\t-----------------------------------------\n");
 	printf("\tValor da mensalidade: %.2lf\n",socios[i].mensalidade[M].valor);
-	printf("\tData de criação da mensalidade: %d/%d/%d\n",socios[i].mensalidade[M].Data.dia,socios[i].mensalidade[M].Data.mes,socios[i].mensalidade[M].Data.ano);
-	printf("\tJuros da mensalidade (1,2%% ao mês): %.2lf%%\n",socios[i].mensalidade[M].juros);
+	printf("\tData de criaÃ§Ã£o da mensalidade: %d/%d/%d\n",socios[i].mensalidade[M].Data.dia,socios[i].mensalidade[M].Data.mes,socios[i].mensalidade[M].Data.ano);
+	printf("\tJuros da mensalidade (1,2%% ao mÃªs): %.2lf%%\n",socios[i].mensalidade[M].juros);
     printf("\t-----------------------------------------\n\n");
     if(socios[i].mensalidade[M].juros>0){    
 	printf("\tValor a ser pago com juros de %.2lf%%: %.2lf\n\n",socios[i].mensalidade[M].juros,socios[i].mensalidade[M].valor+(socios[i].mensalidade[M].valor*socios[i].mensalidade[M].juros));
@@ -158,7 +158,7 @@ void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a m
 		printf("\tValor a ser pago: %.2lf\n",socios[i].mensalidade[M].valor);
 		valor = socios[i].mensalidade[M].valor;
 	}
-    printf("\tDeseja quitar a mensalidade acima?\n1.Sim\n2.Não\n\n");
+    printf("\tDeseja quitar a mensalidade acima?\n1.Sim\n2.NÃ£o\n\n");
     int op;
     scanf("%d",&op);
     getchar();
@@ -171,7 +171,7 @@ void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a m
 }
 
 
-double calcularjuros(int indice,int M){//indice = posição do socio, M = qual mensalidade esta manipulando
+double calcularjuros(int indice,int M){//indice = posiÃ§Ã£o do socio, M = qual mensalidade esta manipulando
 	
 	int qtd = socios[indice].qtdmensal;
 	
@@ -224,7 +224,7 @@ void consultarmensalidade(){
 		for(j=0;j<socios[indice].qtdmensal;j++){
 		printf("\tMensalidade %d\n",j+1);
 		printf("\t-----------------------------------------\n");
-		printf("\tData de criação da mensalidade: %d/%d/%d\n",socios[indice].mensalidade[j].Data.dia,socios[indice].mensalidade[j].Data.mes,socios[indice].mensalidade[j].Data.ano);
+		printf("\tData de criaÃ§Ã£o da mensalidade: %d/%d/%d\n",socios[indice].mensalidade[j].Data.dia,socios[indice].mensalidade[j].Data.mes,socios[indice].mensalidade[j].Data.ano);
 		printf("\tValor da mensalidade: %.2lf\n",socios[indice].mensalidade[j].valor);
 		if(socios[i].mensalidade[j].valorP>0){
 	    printf("\tValor pago: %.2lf\n\n",socios[indice].mensalidade[j].valorP);
@@ -238,7 +238,7 @@ void consultarmensalidade(){
 			}
 			
 		
-		printf("\t----Digite a opção abaixo referente a mensalidade:\n\n");
+		printf("\t----Digite a opÃ§Ã£o abaixo referente a mensalidade:\n\n");
 		printf("\t------------------------------------------\n");
 		printf("\t1.Calcular Juros\n");
 		printf("\t2.Quitar mensalidade\n");
@@ -264,10 +264,10 @@ void consultarmensalidade(){
                     	
                     	printf("\t====Juros====\n");
                     	printf("\t------------------------------------------\n");
-                    	printf("\tJuros da mensalidade (1,2%% ao mês): %.2lf%%\n",socios[indice].mensalidade[numero].juros);
+                    	printf("\tJuros da mensalidade (1,2%% ao mÃªs): %.2lf%%\n",socios[indice].mensalidade[numero].juros);
                     	printf("\tValor da mensalidade com juros de %.2lf%%: %.2lf\n\n",socios[indice].mensalidade[numero].juros,socios[indice].mensalidade[numero].valor+(socios[indice].mensalidade[numero].valor*socios[indice].mensalidade[numero].juros));
                         printf("\t------------------------------------------\n");
-						printf("\tDeseja quitar a mensalidade?\n1.Sim\n2.Não\n\n");
+						printf("\tDeseja quitar a mensalidade?\n1.Sim\n2.NÃ£o\n\n");
                         scanf("%d",&op);
                         if(op == 1){
                         	quitarmensalidade(indice,numero);
@@ -299,7 +299,7 @@ void consultarmensalidade(){
         		return;
 			}
         		
-        		lerData("Digite a data de criação da mensalidade (dd/mm/aaaa): ",
+        		lerData("Digite a data de criaÃ§Ã£o da mensalidade (dd/mm/aaaa): ",
                         &socios[indice].mensalidade[qtd].Data.dia, 
                         &socios[indice].mensalidade[qtd].Data.mes, 
                         &socios[indice].mensalidade[qtd].Data.ano);
@@ -312,14 +312,14 @@ void consultarmensalidade(){
                     	
                     	socios[indice].qtdmensal++;
             case 4:
-            	printf("\t===Operação cancelada===");
+            	printf("\t===OperaÃ§Ã£o cancelada===");
             	break;
         		
 		}
 	
 		
 		if(!encontrado){
-			printf("\t====Socio não encontrado====\n");
+			printf("\t====Socio nÃ£o encontrado====\n");
 			return;
 		}
 		printf("\tpressione qualquer tecla para retornar ao menu inicial\n\n");
@@ -376,7 +376,7 @@ void cadastrardependentes(){
     		fgets(socios[i].dependente[qtdD].parentesco, sizeof(socios[i].dependente[qtdD].parentesco), stdin);
    			socios[i].dependente[qtdD].nomeDependente[strcspn(socios[i].dependente[qtdD].nomeDependente, "\n")] = '\0'; // Remove newline
 		
-			printf("\tDigite o numero do cartão dependente:\n");
+			printf("\tDigite o numero do cartÃ£o dependente:\n");
     		scanf("%ld",&socios[i].dependente[qtdD].cartaoDependente);
    			
    			socios[i].qtdDependentes++;
@@ -443,7 +443,7 @@ void listarcandidatos(){
 
 void cadastrarcandidato() {
     if (qtdcandidatos >= Max) {
-        printf("Limite de candidatos alcançado.\n");
+        printf("Limite de candidatos alcanÃ§ado.\n");
         return;
     }
 
@@ -480,7 +480,7 @@ void cadastrarcandidato() {
 void promoverCandidatoParaSocio(int indiceCandidato) {
 	  int i;
     if (qtdsocios < Max) {
-        // Copia as informações do candidato para o vetor de sócios
+        // Copia as informaÃ§Ãµes do candidato para o vetor de sÃ³cios
         socios[qtdsocios] = candidatos[indiceCandidato];
         
         // Move o candidato para o final do vetor e reduz a quantidade de candidatos
@@ -491,7 +491,7 @@ void promoverCandidatoParaSocio(int indiceCandidato) {
         qtdcandidatos--;
         qtdsocios++;
     } else {
-        printf("Limite de sócios alcançado.\n");
+        printf("Limite de sÃ³cios alcanÃ§ado.\n");
     }
 }
 
@@ -504,7 +504,7 @@ void registrarsocio() {
 	int qtd;
 	
 	if(qtdsocios > Max){
-		printf("\t===Máximo de socios cadastrados no sistema===\n\n");
+		printf("\t===MÃ¡ximo de socios cadastrados no sistema===\n\n");
 		return;
 	}
 	
@@ -529,9 +529,9 @@ void registrarsocio() {
             	qtd = socios[i].qtdmensal;
                 printf("\n\n\t!!Candidato encontrado!!\n\n");
                 encontrado = 1;
-                printf("\tDeseja tornar %s socio do clube?\n Digite S para torná-lo(a) sócio ou qualquer outra tecla para cancelar: \n", candidatos[i].nomeCandidato);
+                printf("\tDeseja tornar %s socio do clube?\n Digite S para tornÃ¡-lo(a) sÃ³cio ou qualquer outra tecla para cancelar: \n", candidatos[i].nomeCandidato);
                 char es;
-                scanf(" %c", &es); // Adiciona um espaço para ignorar espaços em branco
+                scanf(" %c", &es); // Adiciona um espaÃ§o para ignorar espaÃ§os em branco
                 getchar(); // Limpa o newline deixado pelo scanf
 
                 if (es == 's' || es == 'S') {
@@ -542,7 +542,7 @@ void registrarsocio() {
                     	printf("\tDigite a categoria de %s:\nExemplo: A,B,C\n",socios[qtdsocios-1].nomeCandidato);
                     	scanf(" %c",&socios[qtdsocios-1].categoria);
                     	
-                    	lerData("Digite a data de criação da mensalidade (dd/mm/aaaa): ", 
+                    	lerData("Digite a data de criaÃ§Ã£o da mensalidade (dd/mm/aaaa): ", 
                         &socios[qtdsocios-1].mensalidade[socios[qtdsocios-1].qtdmensal].Data.dia, 
                         &socios[qtdsocios-1].mensalidade[socios[qtdsocios-1].qtdmensal].Data.mes, 
                         &socios[qtdsocios-1].mensalidade[socios[qtdsocios-1].qtdmensal].Data.ano);
@@ -553,7 +553,7 @@ void registrarsocio() {
                     	socios[qtdsocios-1].qtdmensal++;
                     	
                     	
-						printf("\n\n\t----%s agora é sócio(a) do clube!----\n",socios[qtdsocios-1].nomeCandidato);
+						printf("\n\n\t----%s agora Ã© sÃ³cio(a) do clube!----\n",socios[qtdsocios-1].nomeCandidato);
 						
 					}
                 }
@@ -566,7 +566,7 @@ void registrarsocio() {
     
 
     if (!encontrado) {
-        printf("\t!!Candidato não encontrado!!\n");
+        printf("\t!!Candidato nÃ£o encontrado!!\n");
     }
     printf("\tpressione qualquer tecla para retornar ao menu inicial\n\n");
 	getchar();
@@ -576,23 +576,23 @@ void registrarsocio() {
 void lerData(const char *prompt, int *dia, int *mes, int *ano) {
     printf("%s", prompt);
     while (scanf("%d/%d/%d", dia, mes, ano) != 3) {
-        printf("Formato de data inválido. Tente novamente (dd/mm/aaaa): ");
+        printf("Formato de data invÃ¡lido. Tente novamente (dd/mm/aaaa): ");
         while (getchar() != '\n'); // Limpa o buffer de entrada
     }
     getchar(); // Limpa o newline restante
 }
 
 long gerarsocio() {
-    static long sociosExistentes[Max] = {0}; // Array para armazenar números de sócios existentes
+    static long sociosExistentes[Max] = {0}; // Array para armazenar nÃºmeros de sÃ³cios existentes
     static int qtdSocios = 0;
     long novoSocio;
     int i, unico;
 
     do {
         unico = 1;
-        novoSocio = rand() % 10000000000; // Gera número de até 10 dígitos
+        novoSocio = rand() % 10000000000; // Gera nÃºmero de atÃ© 10 dÃ­gitos
 
-        // Verifica se o número gerado já existe
+        // Verifica se o nÃºmero gerado jÃ¡ existe
         for (i = 0; i < qtdSocios; i++) {
             if (sociosExistentes[i] == novoSocio) {
                 unico = 0;
@@ -601,7 +601,7 @@ long gerarsocio() {
         }
     } while (!unico);
 
-    // Adiciona o novo número de sócio ao array de sócios existentes
+    // Adiciona o novo nÃºmero de sÃ³cio ao array de sÃ³cios existentes
     if (qtdSocios < Max) {
         sociosExistentes[qtdSocios] = novoSocio;
         qtdSocios++;
@@ -665,7 +665,7 @@ void listarsocios(){
 		}
 		}
 		if(!encontrado){
-			printf("\t====Socio não encontrado====\n");
+			printf("\t====Socio nÃ£o encontrado====\n");
 			return;
 		}
 		printf("\tpressione qualquer tecla para retornar ao menu inicial\n\n");
