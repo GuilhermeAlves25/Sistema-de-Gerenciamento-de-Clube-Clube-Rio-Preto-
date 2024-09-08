@@ -1,9 +1,9 @@
 #include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
-#include <locale.h>
-#define Max 3
+#include <string.h>//Biblioteca para usar funções que manipulam strings
+#include <stdlib.h>//Biblioteca para usar funções como rand
+#include <time.h>//Biblioteca para auxiliar na função rand
+#include <locale.h>//Biblioteca para imprimir caracteres e assentos especiais
+#define Max 3//Maximo de candidatos socios e dependentes possiveis no sistema
 
 void listarcandidatos();
 void cadastrarcandidato();
@@ -17,7 +17,7 @@ void consultarmensalidade();
 double calcularjuros();
 void quitarmensalidade();
 
-
+//struct que armazena a data de criação da mensalidade
 void lerData();
 typedef struct{
 	int dia;
@@ -25,12 +25,14 @@ typedef struct{
 	int ano;
 }data;
 
+//struct que armazena a data de pagamento da mensalidade
 typedef struct{
 	int dia;
 	int mes;
 	int ano;
 }dataP;
 
+//struct que armazena dados da mensalidade
 typedef struct{
 	data Data;
 	double valor;
@@ -42,7 +44,7 @@ typedef struct{
 	
 }Mensalidade;
 
-
+//struct que armazena dados dos dependentes
 typedef struct{
 	char parentesco[50];
 	char nomeDependente[50];
@@ -51,18 +53,20 @@ typedef struct{
 	
 }Dependente;
 
+//etruct que armazena dados da localização
 typedef struct {
     char endereco[100];
     char cep[100];
     char bairro[100];
 } Localizacao;
 
+//struct que armazena dados de contado
 typedef struct {
     char telefone[15];
     char email[50];
 } Contato;
 
-
+//struct principal que reune outros structs como contado,data,localização,dependente e mensalidade
 typedef struct {
     char nomeCandidato[50];
     Localizacao localizacao;
@@ -76,10 +80,12 @@ typedef struct {
     
 } Candidato;
 
+//vetor do tipo candidato que armazena os candidatos que são promovios a socio
 Candidato socios[Max];
-
+//vetor do tipo candidato que armazena os candidatos a socio
 Candidato candidatos[Max];
 
+//Função principal que leva o usuario para uma determinada função de acordo com a escolha no menu
 int main() {
     int escolha;
     int x = 1;
@@ -133,6 +139,7 @@ int main() {
     return 0;
 }
 
+//Função para quitar a mensalidade desejada
 void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a mensalidade que esta sendo quitada
 	float valor;
 	
@@ -170,7 +177,7 @@ void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a
 	}
 }
 
-
+//Função para calcular os juros de uma mensalidade
 double calcularjuros(int indice,int M){//indice = posição do socio, M = qual mensalidade esta manipulando
 	
 	int qtd = socios[indice].qtdmensal;
@@ -185,6 +192,7 @@ double calcularjuros(int indice,int M){//indice = posição do socio, M = qual m
 
 }
 
+//Função para consultar mensalidade, a partir do menu o usuario escolhe o que deseja fazer com a mensalidade
 void consultarmensalidade(){
 	
 	int i;
@@ -325,7 +333,7 @@ void consultarmensalidade(){
 		printf("\tpressione qualquer tecla para retornar ao menu inicial\n\n");
 		getchar();
 }
-
+//Função para cadastrar um dependente a algum socio
 void cadastrardependentes(){
 	
 	int i;
@@ -353,7 +361,7 @@ void cadastrardependentes(){
     for(i=0;i<qtdsocios;i++){
 	if (strcasecmp(socios[i].nomeCandidato, es) == 0) {
                 printf("\n\n\t!!Socio encontrado!!\n\n");
-                if(socios[i].qtdDependentes > Max){
+                if(socios[i].qtdDependentes == Max){
                 	printf("\t====O socio digitado ja possui o maximo de dependentes (3)====\n\n");
                 	return;
                 	break;
@@ -394,7 +402,7 @@ void cadastrardependentes(){
 	printf("\tpressione qualquer tecla para retornar ao menu inicial\n\n");
 	getchar();
 }
-
+//Função para listar os candidatos cadastrados no sistema
 void listarcandidatos(){
 	int i;
     char es[50];
@@ -440,7 +448,7 @@ void listarcandidatos(){
 	
 }
 
-
+//Função para cadastrar um novo candidato ao sistema
 void cadastrarcandidato() {
     if (qtdcandidatos >= Max) {
         printf("Limite de candidatos alcançado.\n");
@@ -476,7 +484,7 @@ void cadastrarcandidato() {
     printf("\t\t\n\n~~~~~~~~~~CANDIDADO CADASTRADO COM SUCESSO~~~~~~~~~~\n\n");
 }
 
-
+//Função que promove um candidato a socio
 void promoverCandidatoParaSocio(int indiceCandidato) {
 	  int i;
     if (qtdsocios < Max) {
@@ -495,6 +503,7 @@ void promoverCandidatoParaSocio(int indiceCandidato) {
     }
 }
 
+//Função para registrar um novo socio no sistema a partir dos candidatos disponiveis
 void registrarsocio() {
     
     int i;
@@ -572,7 +581,7 @@ void registrarsocio() {
 	getchar();
 
 }
-
+//Função para ler a data digitada pelo usuario
 void lerData(const char *prompt, int *dia, int *mes, int *ano) {
     printf("%s", prompt);
     while (scanf("%d/%d/%d", dia, mes, ano) != 3) {
@@ -581,7 +590,7 @@ void lerData(const char *prompt, int *dia, int *mes, int *ano) {
     }
     getchar(); // Limpa o newline restante
 }
-
+//Função que gera um numero de dez digitos pseudo aleatorio para um novo socio
 long gerarsocio() {
     static long sociosExistentes[Max] = {0}; // Array para armazenar números de sócios existentes
     static int qtdSocios = 0;
@@ -609,7 +618,7 @@ long gerarsocio() {
 
     return novoSocio;
 }
-
+//Função para listar os socios cadastrados no sistema
 void listarsocios(){
 	int i;
     char es[50];
