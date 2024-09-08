@@ -149,7 +149,7 @@ void quitarmensalidade(int i,int M){//o i representa a posição do socio. o M a
 	printf("\t-----------------------------------------\n");
 	printf("\tValor da mensalidade: %.2lf\n",socios[i].mensalidade[M].valor);
 	printf("\tData de criação da mensalidade: %d/%d/%d\n",socios[i].mensalidade[M].Data.dia,socios[i].mensalidade[M].Data.mes,socios[i].mensalidade[M].Data.ano);
-	printf("\tJuros da mensalidade (1,2%% ao mês): %.2lf%%\n",socios[i].mensalidade[M].juros);
+	printf("\tJuros da mensalidade: %.2lf%%\n",socios[i].mensalidade[M].juros);
     printf("\t-----------------------------------------\n\n");
     if(socios[i].mensalidade[M].juros>0){    
 	printf("\tValor a ser pago com juros de %.2lf%%: %.2lf\n\n",socios[i].mensalidade[M].juros,socios[i].mensalidade[M].valor+(socios[i].mensalidade[M].valor*socios[i].mensalidade[M].juros));
@@ -264,7 +264,7 @@ void consultarmensalidade(){
                     	
                     	printf("\t====Juros====\n");
                     	printf("\t------------------------------------------\n");
-                    	printf("\tJuros da mensalidade (1,2%% ao mês): %.2lf%%\n",socios[indice].mensalidade[numero].juros);
+                    	printf("\tJuros da mensalidade: %.2lf%%\n",socios[indice].mensalidade[numero].juros);
                     	printf("\tValor da mensalidade com juros de %.2lf%%: %.2lf\n\n",socios[indice].mensalidade[numero].juros,socios[indice].mensalidade[numero].valor+(socios[indice].mensalidade[numero].valor*socios[indice].mensalidade[numero].juros));
                         printf("\t------------------------------------------\n");
 						printf("\tDeseja quitar a mensalidade?\n1.Sim\n2.Não\n\n");
@@ -352,7 +352,7 @@ void cadastrardependentes(){
     
     for(i=0;i<qtdsocios;i++){
 	if (strcasecmp(socios[i].nomeCandidato, es) == 0) {
-                printf("\n\n\t!!Candidato encontrado!!\n\n");
+                printf("\n\n\t!!Socio encontrado!!\n\n");
                 if(socios[i].qtdDependentes > Max){
                 	printf("\t====O socio digitado ja possui o maximo de dependentes (3)====\n\n");
                 	return;
@@ -647,7 +647,7 @@ void listarsocios(){
 		printf("\tNumero do cartao de socio:%ld\n",socios[i].numeroSocio);
         printf("\tCategoria: %c\n", socios[i].categoria);
 		if(socios[i].qtdDependentes< 1){
-		printf("\tO socio ainda nao possui dependentes!\n");
+		printf("\tO socio nao possui dependentes!\n");
 		printf("\t-----------------------------------------\n");	
 		}else {
 			printf("\t-------------------------\n");
@@ -671,8 +671,3 @@ void listarsocios(){
 		printf("\tpressione qualquer tecla para retornar ao menu inicial\n\n");
 		getchar();
 	}
-
-
-
-
-
