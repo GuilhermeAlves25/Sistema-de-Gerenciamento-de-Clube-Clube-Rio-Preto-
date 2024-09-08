@@ -1,6 +1,6 @@
-# Sistema-de-Gerenciamento-de-Clube-Clube-Rio-Preto-
-
 # Sistema de Gerenciamento de Clube
+
+**Clube Rio Preto**
 
 ## Descrição
 
